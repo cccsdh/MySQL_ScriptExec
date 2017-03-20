@@ -1,0 +1,4 @@
+.\Script1.sql
+.\folder\Script2.sql
+
+>>.\MoreScripts.txt

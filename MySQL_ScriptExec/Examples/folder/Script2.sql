@@ -1,0 +1,1 @@
+CREATE TABLE if not exists `Table2` (`ID` int NOT NULL AUTO_INCREMENT ,`RunNumber` int NOT NULL, `FileName` varchar (255) NOT NULL , `SQLCommand` text NOT NULL,  `Status` VarChar(1000) NOT NULL, `FinishedDTTM` datetime NOT NULL,  PRIMARY KEY (`ID`))
