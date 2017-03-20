@@ -351,7 +351,7 @@ namespace MySQL_ScriptExec
                 dataTable.Columns.Add("Database", Type.GetType("System.String"));
                 dataTable.Columns.Add("UserName", Type.GetType("System.String"));
                 var startupPath = dataTable.NewRow();
-                startupPath["Server"] = "(local)";
+                startupPath["Server"] = "127.0.0.1";
                 startupPath["Database"] = "world";
                 startupPath["UserName"] = string.Empty;
                 dataTable.Rows.Add(startupPath);
