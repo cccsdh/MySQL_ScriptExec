@@ -39,6 +39,7 @@
             this.tbServer = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.cbCreate = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -133,11 +134,22 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // cbCreate
+            // 
+            this.cbCreate.AutoSize = true;
+            this.cbCreate.Location = new System.Drawing.Point(106, 176);
+            this.cbCreate.Name = "cbCreate";
+            this.cbCreate.Size = new System.Drawing.Size(158, 17);
+            this.cbCreate.TabIndex = 11;
+            this.cbCreate.Text = "Create DB if it doesn\'t exist?";
+            this.cbCreate.UseVisualStyleBackColor = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(305, 272);
+            this.Controls.Add(this.cbCreate);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbServer);
@@ -169,5 +181,6 @@
         private System.Windows.Forms.TextBox tbServer;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.CheckBox cbCreate;
     }
 }

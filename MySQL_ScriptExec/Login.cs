@@ -29,11 +29,44 @@ namespace MySQL_ScriptExec
                     Close();
                 }
             }
-            catch (Exception exception1)
+            catch (Exception firstEx)
             {
-                var exception = exception1;
-                Cursor.Current = Cursors.Default;
-                MessageBox.Show(exception.Message);
+                if (!cbCreate.Checked)
+                {
+                    var exception = firstEx;
+                    Cursor.Current = Cursors.Default;
+                    MessageBox.Show(exception.Message);
+                }
+                else
+                {
+                    try
+                    {
+                        CreateDatabase();
+                    }
+                    catch (Exception secondEx)
+                    {
+                        var exception = secondEx;
+                        Cursor.Current = Cursors.Default;
+                        MessageBox.Show(exception.Message);
+                    }
+                }
+            }
+        }
+
+        private void CreateDatabase()
+        {
+            string str;
+            string[] text;
+
+            text = new string[] { "Data Source=", tbServer.Text, ";User ID=", tbLoginName.Text, ";Password=", tbPassword.Text, ";" };
+            str = string.Concat(text);
+
+            using (var conn = new MySqlConnection(str))
+            using (var cmd = conn.CreateCommand())
+            {
+                conn.Open();
+                cmd.CommandText = string.Format("CREATE DATABASE IF NOT EXISTS `{0}`;",tbDatabase.Text);
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -49,14 +82,13 @@ namespace MySQL_ScriptExec
         {
             string str;
             string[] text;
-            if (tbServer.Text.Trim() == ".")
-                tbServer.Text = "(local)";
 
             text = new string[] { "Data Source=", tbServer.Text, ";Initial Catalog=", tbDatabase.Text, ";User ID=", tbLoginName.Text, ";Password=", tbPassword.Text, ";" };
             str = string.Concat(text);
 
             using (var sqlConnection = new MySqlConnection(str))
             {
+                
                 sqlConnection.Open();
                 sqlConnection.Close();
             }
